@@ -42,4 +42,31 @@ public class Tamagotchi {
             System.out.println(this.nom + " : Merci !");
         }
     }
+
+    // Question 4 : ageLimite()
+    public boolean ageLimite() {
+        return this.age >= this.dureeDeVie;
+    }
+
+    // Question 5 : vivre()
+    public boolean vivre() {
+        // (a) ne fait rien et retourne true si age == dureeDeVie
+        if (ageLimite()) {
+            return true;
+        }
+        // (b) si energie <= 0 : affiche message de fin et retourne false
+        if (this.energie <= 0) {
+            System.out.println(this.nom + " : je meurs... Arrrggh !");
+            return false;
+        }
+        // (c) si energie > 0 : augmente age de 1, réduit energie de 1
+        this.age++;
+        this.energie--;
+        if (ageLimite()) {
+            System.out.println(this.nom + " : c'est gagné pour moi !");
+        } else {
+            parler();
+        }
+        return true;
+    }
 }
